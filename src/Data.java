@@ -8,9 +8,10 @@ import java.util.HashMap;
  * @Version 1.0
  **/
 public class Data {
-    private static HashMap<String, String> data = new HashMap<>();
-
-    public static boolean insert(String name, String pwd) {
+    private static HashMap<String, String> normalUserData = new HashMap<>();
+    private static HashMap<String, String> adminData = new HashMap<>();
+    public static boolean insert(int type, String name, String pwd) {
+        HashMap<String, String> data = type == 1? adminData : normalUserData;
         if(data.get(name) == null) {
             data.put(name, pwd);
             return true;
@@ -18,11 +19,13 @@ public class Data {
         return false;
     }
 
-    public static String search(String name) {
+    public static String search(int type, String name) {
+        HashMap<String, String> data = type == 1? adminData : normalUserData;
         return data.get(name);
     }
 
-    public static boolean exist(String name) {
+    public static boolean exist(int type, String name) {
+        HashMap<String, String> data = type == 1? adminData : normalUserData;
         return data.containsKey(name);
     }
 }

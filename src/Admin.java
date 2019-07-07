@@ -13,11 +13,11 @@ public class Admin extends User{
     }
 
     public boolean login() {
-        status = pwd.equals(Data.search(name));
+        status = pwd.equals(Data.search(1, name));
         return  status;
     }
 
     public boolean signUp() {
-        return Data.insert(name, pwd);
+        return Data.insert(1, name, pwd);
     }
 }

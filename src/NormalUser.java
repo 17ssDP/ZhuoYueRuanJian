@@ -13,11 +13,11 @@ public class NormalUser extends User{
     }
 
     public boolean login() {
-        status = pwd.equals(Data.search(name));
+        status = pwd.equals(Data.search(2, name));
         return  status;
     }
 
     public boolean signUp() {
-        return Data.insert(name, pwd);
+        return Data.insert(2, name, pwd);
     }
 }
